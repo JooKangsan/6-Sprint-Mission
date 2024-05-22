@@ -6,7 +6,7 @@ import './Product.css';
 import { getProducts }  from '../../api';
 
 const getPageSize = () => {
-  return window.innerWidth < 768 ? 4 :  window.innerWidth < 1280 ? 6 : 10
+  return window.innerWidth < 768 ? 4 :  window.innerWidth < 1200 ? 6 : 10
 };
 const Product = () => {
   const [itemList, setItemList] = useState([]);

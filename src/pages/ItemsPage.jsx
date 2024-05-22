@@ -5,11 +5,8 @@ import Product from "../components/ItemPage/Product";
 const ItemsPage = () => {
   return (
     <>
-      <Header />
-      <div>
-        <BestProduct />
-        <Product />
-      </div>
+      <BestProduct />
+      <Product />
     </>
   );
 };

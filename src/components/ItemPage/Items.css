@@ -1,5 +1,6 @@
 .Items {
-  width: 270px;
+  margin: 0 auto;
+  width: 100%;
   color: var(--gray-800);
   overflow: hidden;
   cursor: pointer;
