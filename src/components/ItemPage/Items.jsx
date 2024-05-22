@@ -8,9 +8,9 @@ const Items = ({ item }) => {
     <div className="Items">
       <img src={item.images} alt={item.name} className="itemImg" />
       <div>
-        <h1>{item.name} </h1>
-        <span>{item.price.toLocaleString()}원</span>
-        <div>
+        <h1 className="ItemsName">{item.name} </h1>
+        <span className="ItemsPrice">{item.price.toLocaleString()}원</span>
+        <div className="ItemsFavorite">
           <img src={heart} />
           <span>{item.favoriteCount}</span>
         </div>

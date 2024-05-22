@@ -1,17 +1,21 @@
-.bestProduct{
+.bestProduct {
   padding-top: 87px;
   padding-bottom: 24px;
 }
 
 .Title {
   color: #111827;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 20px;
-  line-height: normal;
+  margin: 0%;
 }
 
 .bestItems {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  justify-content: center;
+  align-items: center;
 }
