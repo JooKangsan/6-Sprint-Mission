@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "../../context/Header";
-import InputItem from "./InputItem";
+import Header from "../components/context/Header";
+import InputItem from "../components/ItemsAddPage/InputItem";
 
 const AddItemPage = () => {
   const [name, setName] = useState("");

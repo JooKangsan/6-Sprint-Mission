@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "../img/logo.svg";
+import logo from "../../assets/img/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import './Header.css';
+import "./Header.css";
 
 function getLinkStyle({ isActive }) {
   return { color: isActive ? "blue" : undefined };
 }
-
 
 const Header = () => {
   return (

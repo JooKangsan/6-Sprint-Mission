@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import search from "../../img/search.svg";
+import search from "../../assets/img/search.svg";
 import { Link } from "react-router-dom";
 import Items from "./Items";
 import './Product.css';
-import { getProducts }  from '../../../api';
+import { getProducts }  from '../../api';
 
 const getPageSize = () => {
   return window.innerWidth < 768 ? 4 :  window.innerWidth < 1280 ? 6 : 10
