@@ -53,7 +53,7 @@ const Product = () => {
           </div>
           <button
             onClick={() => {
-              nav("/additem");
+              nav("/additems");
             }}
             className="loginLink"
           >
