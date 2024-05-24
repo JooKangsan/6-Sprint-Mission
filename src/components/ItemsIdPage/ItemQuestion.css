@@ -1,0 +1,38 @@
+.Items_Question_textarea {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  height: 104px;
+  resize: none;
+}
+
+.QuestionSubmit {
+  background-color : #3692ff;
+  color : #ffffff;
+  padding: 11.5px 23px;
+border-radius: 8px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+  display: flex;
+  align-self: flex-end;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.QuestionSubmit:hover {
+  background-color:#1967D6;
+}
+
+.QuestionSubmit:focus {
+  background-color: #1251AA;
+}
+
+.QuestionSubmit:disabled {
+  background-color:#9ca3af;
+  cursor: default;
+  pointer-events: none;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputItem from "../components/ItemsAddPage/InputItem";
 import FileInput from "../components/ItemsAddPage/FileInput";
 import TagInput from "../components/ItemsAddPage/TagInput";
-import "./ItemsAddPage.css";
+import "../components/ItemsAddPage/ItemsAddPage.css";
 
 function ItemsAddPage() {
   const [name, setName] = useState("");
