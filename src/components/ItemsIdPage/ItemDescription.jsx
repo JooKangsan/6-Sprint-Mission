@@ -29,7 +29,7 @@ function ItemDescription({ product }) {
           </div>
           <hr />
           <div>
-            <div>상품소개</div>
+            <div className="ItemsIntroduce">상품소개</div>
             <div className="ItemDetailDescription">{product.description}</div>
           </div>
           <div className="TagsContainer">

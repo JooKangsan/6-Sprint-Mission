@@ -4,15 +4,16 @@ import "./CommentCard.css";
 
 function CommentCard({ item }) {
   return (
-    <>
+    <div className="CardContainer">
       <div className="itemsContent">
-        <div className="QuestionContent">{item.content}</div>
+        <p className="QuestionContent">{item.content}</p>
         <button className="SeeMoreButton">
           <img className="SeeMoreImg" src={SeeMore} />
         </button>
       </div>
       <div className="QuestionProfile">
         <img
+          className="QuestionProfileImg"
           src={item.writer.image}
           alt={`${item.writer.nickname}님의 프로필 사진`}
         />
@@ -21,8 +22,11 @@ function CommentCard({ item }) {
           <p className="QuestionTimestamp">{item.updatedAt}</p>
         </div>
       </div>
-      <hr />
-    </>
+      <div>
+        <hr className="hr" />
+        <p/>
+      </div>
+    </div>
   );
 }
 
