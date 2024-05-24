@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProductComments } from "../../api";
 import CommentCard from "./CommentCard";
+import './CommentSection.css'
 
 function CommentSection({ id }) {
   const [comments, setComments] = useState(null);

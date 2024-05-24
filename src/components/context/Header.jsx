@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../../assets/img/logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import logo from "../../assets/img/logo.svg";
 import "./Header.css";
 
 function getLinkStyle({ isActive }) {

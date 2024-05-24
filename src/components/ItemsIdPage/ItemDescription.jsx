@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./ItemDescription.css";
 import Tags from "./Tags";
 import heart from "../../assets/img/heart.svg";
 import heart_red from "../../assets/img/heart-red.svg";
+import "./ItemDescription.css";
 
 function ItemDescription({ product }) {
   const [heartChange, setHeartChange] = useState(true);
@@ -23,15 +23,17 @@ function ItemDescription({ product }) {
       />
       <div className="ItemDetailsContainer">
         <div>
-          <div>{product.name}</div>
-          <div>{product.price.toLocaleString()}원</div>
+          <div className="ItemDetailName">{product.name}</div>
+          <div className="ItemDetailPrice">
+            {product.price.toLocaleString()}원
+          </div>
           <hr />
           <div>
             <div>상품소개</div>
-            <div>{product.description}</div>
+            <div className="ItemDetailDescription">{product.description}</div>
           </div>
-          <div>
-            <div>상품태그</div>
+          <div className="TagsContainer">
+            <div className="ItemsTag">상품태그</div>
             <Tags tags={product.tags} />
           </div>
         </div>

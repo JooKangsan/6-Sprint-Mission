@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { getProducts } from "../../api";
 import Items from "./Items";
 import "./BestProduct.css";
-import { getProducts } from "../../api";
 
 
 const getPageSize = () => {

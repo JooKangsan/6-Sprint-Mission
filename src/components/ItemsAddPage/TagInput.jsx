@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputItem from "./InputItem";
-import "./TagInput.css";
 import Xicon from "../../assets/img/Xicon.svg";
+import "./TagInput.css";
 
 function TagInput({ tags, addTag }) {
   const [input, setInput] = useState("");

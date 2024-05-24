@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { getProductDetail } from "../api";
 import ItemQuestion from "../components/ItemsIdPage/ItemQuestion";
 import ItemDescription from "../components/ItemsIdPage/ItemDescription";
 import BackIcon from "../assets/img/BackIcon.svg";
-import "./ItemsIdPage.css";
-import { useNavigate, useParams } from "react-router";
-import { getProductDetail } from "../api";
+import "../components/ItemsIdPage/ItemsIdPage.css";
 
 function ItemsIdPage() {
   const [product, setProduct] = useState(null);
