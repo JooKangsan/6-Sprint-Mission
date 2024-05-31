@@ -24,32 +24,51 @@ interface PostsProps {
 
 function Posts({ post }: PostsProps) {
   return (
-    <div>
-      <div>
-        <p>{post.content}</p>
-        {post.image ? (
-          <Image src={post.image} width={72} height={72} alt="이미지" />
-        ) : (
-          <></>
-        )}
-      </div>
-      <div>
-        <div>
-          <Image
-            src="/Img/user.svg"
-            width={24}
-            height={24}
-            alt="프로필 이미지"
-          />
-          <div>{post.writer.nickname}</div>
-          <div>{format(post.createdAt, "yyyy. MM. dd")}</div>
+    <>
+      <div className={styles.Container}>
+        <div className={styles.InnerContainer}>
+          <p className={styles.Content}>{post.content}</p>
+          <div>
+            {post.image ? (
+              <Image
+                src={post.image}
+                width={72}
+                height={72}
+                alt="이미지"
+                className={styles.Img}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-        <div>
-          <Image src="/Img/heart.svg" width={16} height={16} alt="heart" />
-          <div>{post.likeCount}</div>
+        <div className={styles.InnerContainer}>
+          <div className={styles.Group}>
+            <Image
+              src="/Img/user.svg"
+              width={24}
+              height={24}
+              alt="프로필 이미지"
+            />
+            <div className={styles.nickname}>{post.writer.nickname}</div>
+            <div className={styles.CreatedAt}>
+              {format(post.createdAt, "yyyy. MM. dd")}
+            </div>
+          </div>
+          <div className={styles.HeartGroup}>
+            <Image
+              src="/Img/heart.svg"
+              width={16}
+              height={16}
+              alt="heart"
+              className={styles.Heart}
+            />
+            <div className={styles.likeCount}>{post.likeCount}</div>
+          </div>
         </div>
       </div>
-    </div>
+      <div className={styles.Divider} />
+    </>
   );
 }
 

@@ -24,6 +24,7 @@
 .postNav {
   display: flex;
   justify-content: space-between;
+  max-width: 1200px;
 }
 
 .addBtn {
@@ -52,10 +53,10 @@
 
 .searchImg {
   position: relative;
-  top: 10px;
-  left: 40px;
-  width: 24px;
-  height: 24px;
+  top: 1rem;
+  left: 4rem;
+  width: 2.4rem;
+  height: 2.4rem;
   z-index: 999;
 }
 
@@ -66,8 +67,8 @@
   padding: 9px 20px 9px 46px;
   gap: 10px;
   border: none;
-  width: 100%;
-  height: 42px;
+  width: 105rem;
+  height: 4.2rem;
   background: #f3f4f6;
   border-radius: 12px;
   color: black;
@@ -76,16 +77,21 @@
 .SelectButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 12px 14px;
-  gap: 10px;
-  width: 130px;
-  height: 42px;
+  gap: 1rem;
+  width: 13rem;
+  height: 4.2rem;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
   color: #1f2937;
+}
+
+.MobileSort{
+  display: none;
 }

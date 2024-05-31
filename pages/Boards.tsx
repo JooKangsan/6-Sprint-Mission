@@ -52,10 +52,10 @@ function Boards() {
     <div className={styles.Container}>
       <div>
         <h2 className={styles.title}>베스트 게시글</h2>
-        <div  className={styles.BestPosts}>
-        {topArticles.map((post) => (
-          <BestPosts key={post.id} post={post} />
-        ))}
+        <div className={styles.BestPosts}>
+          {topArticles.map((post) => (
+            <BestPosts key={post.id} post={post} />
+          ))}
         </div>
       </div>
       <div className={styles.postNav}>
@@ -64,7 +64,7 @@ function Boards() {
           <button className={styles.addBtn}>글쓰기</button>
         </div>
       </div>
-      <div className={styles.postNav} >
+      <div className={styles.postNav}>
         <div className={styles.search}>
           <Image
             src="/Img/search.svg"
@@ -98,15 +98,25 @@ function Boards() {
               />
             </div>
             <div>
-              {/* <Image src="/Img/sort.svg" width={24} height={24} alt="sort" /> */}
+              <Image
+                src="/Img/sort.svg"
+                width={24}
+                height={24}
+                alt="sort"
+                className={styles.MobileSort}
+              />
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <div onClick={() => handleOrderChange("recent")}>최신순</div>
-        <div onClick={() => handleOrderChange("like")}>좋아요순</div>
-      </div>
+      {isOpen ? (
+        <div>
+          <div onClick={() => handleOrderChange("recent")}>최신순</div>
+          <div onClick={() => handleOrderChange("like")}>좋아요순</div>
+        </div>
+      ) : (
+        <></>
+      )}
 
       {posts.map((post) => (
         <Posts key={post.id} post={post} />

@@ -1,0 +1,71 @@
+.Container {
+  margin: 20px auto;
+  width: 1200px;
+}
+
+.InnerContainer {
+  display: flex;
+}
+
+.Content {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1f2937;
+  width: 1120px;
+  min-height: 112px;
+  padding: 20px 0;
+}
+
+.Img {
+  box-sizing: border-box;
+  margin: 20px 0 20px auto;
+  width: 72px;
+  height: 72px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.Group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b5563;
+}
+
+.createdAt {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9ca3af;
+}
+
+.HeartGroup {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 0 auto;
+}
+
+.likeCount {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b5563;
+}
+
+.Divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 16px 0;
+}
+
