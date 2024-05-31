@@ -1,8 +1,5 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import search from "@/public/search.svg";
-import arrowDown from "@/public/arrowDown.svg";
-import sort from "@/public/sort.svg";
 import axios from "./api/axios";
 import Posts from "@/components/Posts";
 import BestPosts from "@/components/BestPosts";
@@ -91,7 +88,9 @@ function Boards() {
           <div onClick={() => handleOrderChange("like")}>좋아요순</div>
         </div>
       </div>
-      <Posts />
+      {posts.map((post) => (
+          <Posts key={post.id} post={post} />
+        ))}
     </>
   );
 }

@@ -25,18 +25,18 @@ function BestPosts({ post }: BestPostsProps) {
   return (
     <div key={post.id}>
       <div>
-        <Image src="/Img/badge.svg" width={30} height={30} alt="badge" />
+        <Image src="/Img/badge.svg" width={102} height={30} alt="badge" />
         <div>
           <p>{post.content}</p>
           {post.image ? (
-            <Image src={post.image} width={30} height={30} alt="이미지" />
+            <Image src={post.image} width={72} height={72} alt="이미지" />
           ) : (
             <></>
           )}
         </div>
         <div>
           <p>{post.writer.nickname}</p>
-          <Image src="/Img/heart.svg\" width={30} height={30} alt="heart" />
+          <Image src="/Img/heart.svg" width={16} height={16} alt="heart" />
           <p>{post.likeCount}</p>
           <p>{format(new Date(post.createdAt), "yyyy. MM. dd")}</p>
         </div>
