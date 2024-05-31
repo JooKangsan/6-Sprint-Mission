@@ -1,0 +1,78 @@
+.BestContainer {
+  display: flex;
+  justify-content: center;
+  width: 384px;
+  height: 169px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+.InnerContainer {
+  width: 336px;
+  height: 153px;
+  position: relative;
+}
+
+.Content {
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+  max-height: 70px;
+  overflow: hidden;
+}
+
+.Text {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1f2937;
+}
+
+.PostImgs {
+  box-sizing: border-box;
+  margin: 0 0 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.InfoContent {
+  display: flex;
+  width: 336px;
+  justify-content: space-between;
+  bottom: 10px;
+  position: absolute;
+}
+
+.Info {
+  display: flex;
+  gap: 10px;
+}
+
+.nickname {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b5563;
+}
+
+.likeCount {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b5563;
+}
+
+.createdAt {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9ca3af;
+  margin: 0 0 0 auto;
+}

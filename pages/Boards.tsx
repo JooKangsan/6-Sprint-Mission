@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "./api/axios";
 import Posts from "@/components/Posts";
 import BestPosts from "@/components/BestPosts";
+import styles from "../styles/Boards.module.css";
 
 interface Post {
   id: number;
@@ -48,50 +49,69 @@ function Boards() {
     setIsOpen(false);
   };
   return (
-    <>
+    <div className={styles.Container}>
       <div>
-        <h2>베스트 게시글</h2>
+        <h2 className={styles.title}>베스트 게시글</h2>
+        <div  className={styles.BestPosts}>
         {topArticles.map((post) => (
           <BestPosts key={post.id} post={post} />
         ))}
+        </div>
       </div>
-      <div>
-        <h2>게시글</h2>
-        <button>글쓰기</button>
+      <div className={styles.postNav}>
+        <h2 className={styles.title}>게시글</h2>
+        <div>
+          <button className={styles.addBtn}>글쓰기</button>
+        </div>
       </div>
-      <div>
-        <Image src="/Img/search.svg" width={24} height={24} alt="search" />
-        <input
-          type="text"
-          placeholder="검색할 상품을 입력해주세요"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      <div>
-        <div onClick={() => setIsOpen(!isOpen)}>
-          <div>{order === "recent" ? "최신순" : "좋아요순"}</div>
-          <div>
-            <Image
-              src="/Img/arrowDown.svg"
-              width={15.7}
-              height={7.42}
-              alt="ArrowDown"
-            />
-          </div>
-          <div>
-            <Image src="/Img/sort.svg" width={24} height={24} alt="sort" />
-          </div>
+      <div className={styles.postNav} >
+        <div className={styles.search}>
+          <Image
+            src="/Img/search.svg"
+            width={24}
+            height={24}
+            alt="search"
+            className={styles.searchImg}
+          />
+          <input
+            className={styles.searchBar}
+            type="text"
+            placeholder="검색할 상품을 입력해주세요"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <div>
-          <div onClick={() => handleOrderChange("recent")}>최신순</div>
-          <div onClick={() => handleOrderChange("like")}>좋아요순</div>
+          <div
+            className={styles.SelectButton}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <div className={styles.Order}>
+              {order === "recent" ? "최신순" : "좋아요순"}
+            </div>
+            <div>
+              <Image
+                src="/Img/arrowDown.svg"
+                width={24}
+                height={24}
+                alt="ArrowDown"
+              />
+            </div>
+            <div>
+              {/* <Image src="/Img/sort.svg" width={24} height={24} alt="sort" /> */}
+            </div>
+          </div>
         </div>
       </div>
+      <div>
+        <div onClick={() => handleOrderChange("recent")}>최신순</div>
+        <div onClick={() => handleOrderChange("like")}>좋아요순</div>
+      </div>
+
       {posts.map((post) => (
-          <Posts key={post.id} post={post} />
-        ))}
-    </>
+        <Posts key={post.id} post={post} />
+      ))}
+    </div>
   );
 }
 

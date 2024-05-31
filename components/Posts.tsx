@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { format } from "date-fns";
+import styles from "../styles/Posts.module.css";
 
 interface Post {
   id: number;

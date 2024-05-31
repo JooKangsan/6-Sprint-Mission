@@ -1,0 +1,91 @@
+.Container {
+  box-sizing: border-box;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #111827;
+  margin: 30px 0;
+}
+
+.BestPosts {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.postNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 19px;
+  gap: 10px;
+  width: 8.8rem;
+  height: 4.2rem;
+  margin: 30px 0 30px auto;
+  background: #3692ff;
+  border: none;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+.search {
+  display: flex;
+  margin: 0 auto 0 -25px;
+}
+
+.searchImg {
+  position: relative;
+  top: 10px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  z-index: 999;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 9px 20px 9px 46px;
+  gap: 10px;
+  border: none;
+  width: 100%;
+  height: 42px;
+  background: #f3f4f6;
+  border-radius: 12px;
+  color: black;
+}
+
+.SelectButton {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  gap: 10px;
+  width: 130px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1f2937;
+}
