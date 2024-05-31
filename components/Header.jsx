@@ -2,14 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "../styles/Header.module.css";
-import logo from "../public/logo.svg";
-import user from "../public/user.svg";
+
 function Header() {
   return (
     <div className={styles.Container}>
       <div className={styles.InnerContainer}>
         <Link href="/">
-          <Image className={styles.logo} src={logo} alt="로고" />
+          <Image
+            className={styles.logo}
+            src="/Img/logo.svg"
+            width={152}
+            height={68}
+            alt="로고"
+          />
         </Link>
         <div className={styles.selectBox}>
           <Link href="/Boards" className={styles.box}>
@@ -21,7 +26,13 @@ function Header() {
         </div>
       </div>
       <Link href="/mypage">
-        <Image className={styles.user} src={user} alt="유저이미지" />
+        <Image
+          className={styles.user}
+          src="/Img/user.svg"
+          width={40}
+          height={40}
+          alt="유저이미지"
+        />
       </Link>
     </div>
   );
