@@ -25,16 +25,6 @@ interface BestPostsProps {
 }
 
 function Boards() {
-  useEffect(() => {
-    async function getPosts() {
-      const res = await axios.get(`/articles`);
-      console.log("res", res);
-      const nextPosts: Post[] = res.data.list;
-      setPosts(nextPosts);
-    }
-    getPosts();
-  }, []);
-
   const [posts, setPosts] = useState<Post[]>([]);
   const [order, setOrder] = useState("recent");
   const [isOpen, setIsOpen] = useState(false);
@@ -44,10 +34,51 @@ function Boards() {
   const sortedArticles = posts.sort((a, b) => b.likeCount - a.likeCount);
   const topArticles = sortedArticles.slice(0, visiblePostsCount);
 
+  async function getPosts() {
+    const res = await axios.get(`/articles`);
+    console.log("res", res);
+    const nextPosts: Post[] = res.data.list;
+    setPosts(nextPosts);
+  }
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisiblePostsCount(1);
+      } else if (window.innerWidth < 1200) {
+        setVisiblePostsCount(2);
+      } else {
+        setVisiblePostsCount(3);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleOrderChange = (selectedOrder: string) => {
     setOrder(selectedOrder);
     setIsOpen(false);
   };
+
+  const filteredPosts = posts
+    ?.filter((post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (order === "recent") {
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      } else {
+        return b.likeCount - a.likeCount;
+      }
+    });
+
   return (
     <div className={styles.Container}>
       <div>
@@ -110,15 +141,25 @@ function Boards() {
         </div>
       </div>
       {isOpen ? (
-        <div>
-          <div onClick={() => handleOrderChange("recent")}>최신순</div>
-          <div onClick={() => handleOrderChange("like")}>좋아요순</div>
+        <div className={styles.OptionsContainer}>
+          <div
+            onClick={() => handleOrderChange("recent")}
+            className={styles.Option}
+          >
+            최신순
+          </div>
+          <div
+            onClick={() => handleOrderChange("like")}
+            className={styles.Option}
+          >
+            좋아요순
+          </div>
         </div>
       ) : (
         <></>
       )}
 
-      {posts.map((post) => (
+      {filteredPosts.map((post) => (
         <Posts key={post.id} post={post} />
       ))}
     </div>
