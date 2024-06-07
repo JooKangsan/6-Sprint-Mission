@@ -1,9 +1,11 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "./api/axios";
 import Posts from "@/components/Posts";
 import BestPosts from "@/components/BestPosts";
+import { SORT_ORDERS, SORT_LABELS } from "@/utils/sort";
 import styles from "../styles/Boards.module.css";
+import ButtonLink from "@/components/ButtonLink";
 
 interface Post {
   id: number;
@@ -25,8 +27,10 @@ interface BestPostsProps {
 }
 
 function Boards() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   const [posts, setPosts] = useState<Post[]>([]);
-  const [order, setOrder] = useState("recent");
+  const [order, setOrder] = useState(SORT_ORDERS.RECENT);
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [visiblePostsCount, setVisiblePostsCount] = useState(3);
@@ -35,14 +39,21 @@ function Boards() {
   const topArticles = sortedArticles.slice(0, visiblePostsCount);
 
   async function getPosts() {
-    const res = await axios.get(`/articles`);
-    console.log("res", res);
-    const nextPosts: Post[] = res.data.list;
-    setPosts(nextPosts);
+    try {
+      const res = await axios.get(
+        `/articles/?page=${currentPage}&per_page=${perPage}`
+      );
+      console.log("res", res);
+      const nextPosts: Post[] = res.data.list;
+      setPosts(nextPosts);
+    } catch (error) {
+      console.error("데이터를 불러오지 못했습니다.", error);
+    }
   }
+
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [currentPage, perPage]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -65,19 +76,21 @@ function Boards() {
     setIsOpen(false);
   };
 
-  const filteredPosts = posts
-    ?.filter((post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (order === "recent") {
-        return (
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-      } else {
-        return b.likeCount - a.likeCount;
-      }
-    });
+  const filteredPosts = useMemo(() => {
+    return posts
+      ?.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .sort((a, b) => {
+        if (order === SORT_ORDERS.RECENT) {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        } else {
+          return b.likeCount - a.likeCount;
+        }
+      });
+  }, [posts, searchTerm, order]);
 
   return (
     <div className={styles.Container}>
@@ -92,7 +105,12 @@ function Boards() {
       <div className={styles.postNav}>
         <h2 className={styles.title}>게시글</h2>
         <div>
-          <button className={styles.addBtn}>글쓰기</button>
+          <ButtonLink
+            className={isOpen ? styles.addBtn : styles.addBt}
+            href="./addboard/"
+          >
+            글쓰기
+          </ButtonLink>
         </div>
       </div>
       <div className={styles.postNav}>
@@ -118,7 +136,9 @@ function Boards() {
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className={styles.Order}>
-              {order === "recent" ? "최신순" : "좋아요순"}
+              {order === SORT_ORDERS.RECENT
+                ? SORT_LABELS[SORT_ORDERS.RECENT]
+                : SORT_LABELS[SORT_ORDERS.LIKES]}
             </div>
             <div>
               <Image
@@ -143,13 +163,13 @@ function Boards() {
       {isOpen ? (
         <div className={styles.OptionsContainer}>
           <div
-            onClick={() => handleOrderChange("recent")}
+            onClick={() => handleOrderChange(SORT_ORDERS.RECENT)}
             className={styles.Option}
           >
             최신순
           </div>
           <div
-            onClick={() => handleOrderChange("like")}
+            onClick={() => handleOrderChange(SORT_ORDERS.LIKES)}
             className={styles.Option}
           >
             좋아요순
@@ -167,3 +187,5 @@ function Boards() {
 }
 
 export default Boards;
+
+

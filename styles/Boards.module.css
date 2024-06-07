@@ -47,6 +47,25 @@
   color: #ffffff;
 }
 
+.addBt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 19px;
+  gap: 10px;
+  width: 8.8rem;
+  height: 4.2rem;
+  margin: 30px 0 30px auto;
+  background: #3692ff;
+  border: none;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: #2ba76f;
+}
+
 .search {
   display: flex;
   margin: 0 auto 0 -25px;

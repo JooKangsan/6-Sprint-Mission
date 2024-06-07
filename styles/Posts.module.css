@@ -7,7 +7,7 @@
   display: flex;
 }
 
-.Content {
+.title {
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -68,4 +68,3 @@
   background-color: #e5e7eb;
   margin: 16px 0;
 }
-
