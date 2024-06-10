@@ -1,0 +1,61 @@
+.Container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1200px;
+  margin: 32px auto 0;
+  height: 120px;
+}
+
+.topContainer {
+  height: 80px;
+}
+
+.title {
+  height: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.titleContainer {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.innerContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.Profile {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.DateColor {
+  color: #9ca3af;
+}
+
+.like {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.hr {
+  height: 1px;
+  width: 100%;
+  background-color: #e5e7eb;
+}
+
+.content {
+  font-size: 1.6rem;
+}
