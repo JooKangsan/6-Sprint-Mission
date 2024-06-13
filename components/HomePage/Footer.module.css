@@ -1,0 +1,29 @@
+.footer {
+  width: 100vw;
+  height: 160px;
+  background-color: var(--gray-900);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 19.09px;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+}
+
+.footer_inner {
+  flex-grow: 1;
+  max-width: 1920px;
+  padding: 32px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-inner_center {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-inner_right {
+  display: flex;
+  gap: 12px;
+}
