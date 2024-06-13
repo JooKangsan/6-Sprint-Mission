@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Banner from "@/components/HomePage/Banner";
+import Section from "@/components/HomePage/Section";
+import Footer from "@/components/HomePage/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,65 +13,50 @@ export default function Home() {
     <>
       <Head>
         <title>판다마켓</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Img/icons/favicon.ico" />
       </Head>
+      <Banner
+        text1="일상의 모든 물건을"
+        text2="거래해 보세요"
+        src="/Img/main/panda-1.png"
+        alt="로고"
+      />
       <div>
-        <p>
-          일상의 모든 물건을
-          <br /> 거래해보세요
-        </p>
-        <button>구경하러 가기</button>
-        <Image src="/Img/logo.svg" width={996} height={447} alt="로고" />
+        <Section
+          badge="HotItem"
+          title1="인기 상품을"
+          title2="확인 해 보세요"
+          content1="가장 HOT한 중고거래 물품을"
+          content2="판다마켓에서 확인해보세요"
+          src="/Img/main/main-img-1.png"
+          alt="판다마켓"
+        />
+        <Section
+          badge="search"
+          title1="구매를 원하는"
+          title2="상품을 검색하세요"
+          content1="구매하고 싶은 물픔은 검색해서"
+          content2="쉽게 찾아보세요"
+          src="/Img/main/main-img-2.png"
+          alt="판다마켓"
+        />
+        <Section
+          badge="register"
+          title1="판매를 원하는"
+          title2="상품을 등록하세요"
+          content1="어떤 물건이든 판매하고 싶은 상품을"
+          content2="쉽게 등록하세요"
+          src="/Img/main/main-img-3.png"
+          alt="판다마켓"
+        />
       </div>
-      <div>
-        <div>
-          <Image src="/Img/logo.svg" width={588} height={444} alt="로고" />
-          <span>HotItem</span>
-          <p>
-            인기상품을 <br />
-            확인 해 보세요
-          </p>
-          <p>
-            가장 HOT한 중고거래 물품을
-            <br />
-            판다 마켓에서 확인해 보세요
-          </p>
-        </div>
-        <div>
-          <Image src="/Img/logo.svg" width={588} height={444} alt="로고" />
-          <span>search</span>
-          <p>
-            구매를 원하는 <br />
-            상품을 검색하세요
-          </p>
-          <p>
-            구매하고 싶은 물픔은 검색해서
-            <br />
-            쉽게 찾아보세요
-          </p>
-        </div>
-        <div>
-          <Image src="/Img/logo.svg" width={588} height={444} alt="로고" />
-          <span>register</span>
-          <p>
-            판매를 원하는 <br />
-            상품을 등록하세요
-          </p>
-          <p>
-            어떤 물건이든 판매하고 싶은 상품을
-            <br />
-            쉽게 등록하세요
-          </p>
-        </div>
-      </div>
-      <div>
-        <p>
-          믿을수 있는
-          <br />
-          판다마켓 중고거래
-        </p>
-        <Image src="/Img/logo.svg" width={996} height={447} alt="로고" />
-      </div>
+      <Banner
+        text1="믿을 수 있는"
+        text2="판다마켓 중고거래"
+        src="/Img/main/panda-1.png"
+        alt="로고"
+      />
+      <Footer/>
     </>
   );
 }

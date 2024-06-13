@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>판다마켓</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/Img/icons/favicon.ico'/>
       </Head>
       <Header />
       <Component {...pageProps} />
