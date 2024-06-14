@@ -5,8 +5,64 @@ import Input from "@/components/sign/Input";
 import Label from "@/components/sign/Label";
 import Button from "@/components/sign/SignButton";
 import EasyLogin from "@/components/sign/EasyLogin";
+import { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { useRouter } from "next/router";
+import { useAuth } from "@/context/AuthProvider";
+import axios from "@/pages/api/axios";
 
-function register() {
+interface Register {
+  email: string;
+  nickname: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+function Register() {
+  const [values, setValues] = useState({
+    email: "",
+    nickname: "",
+    password: "",
+    passwordConfirmation: "",
+  });
+  const router = useRouter();
+  const { user, login } = useAuth(false);
+
+  const handleChange = (name: string, value: string) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { email, nickname, password, passwordConfirmation } = values;
+
+    let result;
+    try {
+      result = await axios.post("/auth/signUp", {
+        email,
+        nickname,
+        password,
+        passwordConfirmation,
+      });
+      await login({ email, password });
+    } catch (e) {}
+    // NOTE - 로그인 후 메인 페이지로 이동
+    router.push("/");
+  };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/myPage");
+    }
+  }, [user, router]);
+
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -17,13 +73,15 @@ function register() {
           alt="판다마켓 로고"
         />
       </Link>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Label htmlFor="email">이메일</Label>
         <Input
           id="email"
           name="email"
           type="email"
           placeholder="이메일을 입력해 주세요"
+          onChange={handleInputChange}
+          value={values.email}
         />
         <Label htmlFor="email">닉네임</Label>
         <Input
@@ -31,6 +89,8 @@ function register() {
           name="nickname"
           type="nickname"
           placeholder="닉네임을 입력해 주세요"
+          onChange={handleInputChange}
+          value={values.nickname}
         />
         <Label htmlFor="password">비밀번호</Label>
         <Input
@@ -38,13 +98,17 @@ function register() {
           name="password"
           type="password"
           placeholder="비밀번호를 입력해 주세요"
+          onChange={handleInputChange}
+          value={values.password}
         />
-        <Label htmlFor="password">비밀번호 확인</Label>
+        <Label htmlFor="passwordConfirmation">비밀번호 확인</Label>
         <Input
-          id="password"
-          name="password"
+          id="passwordConfirmation"
+          name="passwordConfirmation"
           type="password"
           placeholder="비밀번호를 다시 한 번 입력해 주세요"
+          onChange={handleInputChange}
+          value={values.passwordConfirmation}
         />
         <Button isable={false} text="회원가입" />
         <EasyLogin />
@@ -59,4 +123,4 @@ function register() {
   );
 }
 
-export default register;
+export default Register;
