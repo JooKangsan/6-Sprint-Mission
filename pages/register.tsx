@@ -25,7 +25,7 @@ function Register() {
     passwordConfirmation: "",
   });
   const router = useRouter();
-  const { user, login } = useAuth(false);
+  const { user, login } = useAuth(true);
 
   const handleChange = (name: string, value: string) => {
     setValues((prevValues) => ({

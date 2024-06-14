@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import instance from "../pages/api/axios";
 import { isAxiosError } from "axios";
-import { setCookie } from "cookies-next";
+import { setCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 
 // User 타입 정의
@@ -25,7 +25,6 @@ interface AuthContextType {
   user: User | null;
   isPending: boolean;
   login: (credentials: { email: string; password: string }) => Promise<void>;
-  updateMe: (formData: any) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,37 +35,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isPending: boolean;
   }>({
     user: null,
-    isPending: false, // 초기 isPending 상태를 false로 설정
+    isPending: true, // 초기 isPending 상태를 true로 설정
   });
 
   async function getMe() {
+    console.log("getMe 함수 시작");
     setValues((prevValues) => ({
       ...prevValues,
       isPending: true,
     }));
-    let nextUser: User | null = null;
+
     try {
       const res = await instance.get("/users/me");
       const userData = res.data;
 
-      nextUser = {
+      const nextUser: User = {
         id: userData.id,
         image: userData.image,
         nickname: userData.nickname,
         updatedAt: userData.updatedAt,
         createdAt: userData.createdAt,
       };
-    } catch (error) {
-      if (isAxiosError(error) && error.response?.status === 401) {
-        // 로그인하지 않은 상태에서 401 에러를 처리
-        console.error("User is not authenticated:", error);
-      } else {
-        console.error("Error fetching user data:", error);
-      }
-    } finally {
+
+      localStorage.setItem("user", JSON.stringify(nextUser));
+
       setValues((prevValues) => ({
         ...prevValues,
         user: nextUser,
+        isPending: false,
+      }));
+    } catch (error) {
+      if (isAxiosError(error)) {
+        console.error("API 요청 오류:", error.response?.data);
+      } else {
+        console.error("기타 오류:", error);
+      }
+
+      setValues((prevValues) => ({
+        ...prevValues,
+        user: null,
         isPending: false,
       }));
     }
@@ -85,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
     const { accessToken, refreshToken, user } = response.data;
 
-    const UserData: User = {
+    const userData: User = {
       id: user.id,
       image: user.image,
       nickname: user.nickname,
@@ -96,24 +103,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setCookie("accessToken", accessToken, { maxAge: 60 * 60 * 24 });
     setCookie("refreshToken", refreshToken, { maxAge: 60 * 60 * 24 });
 
+    localStorage.setItem("user", JSON.stringify(userData));
+
     setValues((prevValues) => ({
       ...prevValues,
-      user: UserData,
+      user: userData,
       isPending: false,
     }));
   }
 
-  async function updateMe(formData: any) {
-    const res = await instance.patch("/users/me", formData);
-    const nextUser: User = res.data;
-    setValues((prevValues) => ({
-      ...prevValues,
-      user: nextUser,
-    }));
-  }
-
   useEffect(() => {
-    getMe();
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setValues((prevValues) => ({
+        ...prevValues,
+        user: JSON.parse(storedUser),
+        isPending: false,
+      }));
+    } else {
+      getMe();
+    }
   }, []);
 
   return (
@@ -122,7 +131,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user: values.user,
         isPending: values.isPending,
         login,
-        updateMe,
       }}
     >
       {children}
@@ -131,7 +139,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 export function useAuth(required: boolean = true) {
-  // required 매개변수 기본값 true로 설정
   const context = useContext(AuthContext);
   const router = useRouter();
   if (!context) {
@@ -140,7 +147,9 @@ export function useAuth(required: boolean = true) {
 
   useEffect(() => {
     if (required && !context.user && !context.isPending) {
+      router.push("/login");
     }
   }, [context.user, context.isPending, router, required]);
+
   return context;
 }

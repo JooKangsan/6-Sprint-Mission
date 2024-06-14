@@ -15,7 +15,7 @@ function Login() {
     password: "",
   });
   const router = useRouter();
-  const { user, login } = useAuth();
+  const { user, login } = useAuth(true);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -31,13 +31,11 @@ function Login() {
     await login({ email, password });
     router.push("/");
   }
-
   useEffect(() => {
     if (user) {
       router.push("/");
     }
   }, [user, router]);
-console.log(values)
   return (
     <div className={styles.container}>
       <Link href="/">

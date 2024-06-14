@@ -4,10 +4,12 @@ import styles from "@/styles/Home.module.css";
 import Banner from "@/components/HomePage/Banner";
 import Section from "@/components/HomePage/Section";
 import Footer from "@/components/HomePage/Footer";
+import { useAuth } from "@/context/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { user } = useAuth(true);
   return (
     <>
       <Head>
