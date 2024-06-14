@@ -38,7 +38,7 @@ function BoardDetail({ article }: PostsProps) {
           <div className={styles.innerContainer}>
             <div className={styles.Profile}>
               <Image
-                src="/Img/user.svg"
+                src="/Img/icons/user.svg"
                 width={24}
                 height={24}
                 alt="토끼이미지"
@@ -46,9 +46,9 @@ function BoardDetail({ article }: PostsProps) {
               <p>{nickname}</p>
               <p className={styles.DateColor}>{formattedCreatedAt}</p>
             </div>
-            <Image src="/Img/Vector.svg" width={1} height={24} alt="세로선" />
+            <Image src="/Img/icons/Vector.svg" width={1} height={24} alt="세로선" />
             <div className={styles.like}>
-              <Image src="/Img/heart.svg" width={24} height={24} alt="하트" />
+              <Image src="/Img/icons/heart.svg" width={24} height={24} alt="하트" />
               <p>{likeCount}</p>
             </div>
           </div>

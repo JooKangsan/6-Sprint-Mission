@@ -116,7 +116,7 @@ function Boards() {
       <div className={styles.postNav}>
         <div className={styles.search}>
           <Image
-            src="/Img/search.svg"
+            src="/Img/icons/search.svg"
             width={24}
             height={24}
             alt="search"
@@ -142,7 +142,7 @@ function Boards() {
             </div>
             <div>
               <Image
-                src="/Img/arrowDown.svg"
+                src="/Img/icons/arrowDown.svg"
                 width={24}
                 height={24}
                 alt="ArrowDown"
@@ -150,7 +150,7 @@ function Boards() {
             </div>
             <div>
               <Image
-                src="/Img/sort.svg"
+                src="/Img/icons/sort.svg"
                 width={24}
                 height={24}
                 alt="sort"
