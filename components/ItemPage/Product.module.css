@@ -63,7 +63,17 @@
   }
 }
 
-
+.optionButton {
+  width: 13rem;
+  height: 4.2rem;
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 1.2rem;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .addItemBtn {
   background-color: #3692ff;
@@ -79,4 +89,42 @@
   display: grid;
   grid-template-columns: repeat(5, 2fr);
   gap: 24px;
+}
+
+.btnToggle {
+  position: relative;
+}
+.optionWrapper {
+  top: 4.6rem;
+  position: absolute;
+}
+
+.OptionsContainer {
+  position: absolute;
+  z-index: 1;
+  width: 130px;
+  height: 84px;
+  background: #ffffff;
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #e5e7eb;
+  border-radius: 12px 12px 12px 12px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2937;
+  right: 0;
+}
+
+.Option {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 42px;
+  border-bottom: 1px solid #ccc;
 }

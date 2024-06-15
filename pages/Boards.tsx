@@ -160,7 +160,7 @@ function Boards() {
           </div>
         </div>
       </div>
-      {isOpen ? (
+      {isOpen && (
         <div className={styles.OptionsContainer}>
           <div
             onClick={() => handleOrderChange(SORT_ORDERS.RECENT)}
@@ -175,8 +175,6 @@ function Boards() {
             좋아요순
           </div>
         </div>
-      ) : (
-        <></>
       )}
 
       {filteredPosts.map((post) => (
@@ -187,5 +185,3 @@ function Boards() {
 }
 
 export default Boards;
-
-
