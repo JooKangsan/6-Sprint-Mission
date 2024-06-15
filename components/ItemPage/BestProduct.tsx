@@ -2,18 +2,18 @@ import React, { useEffect, useState, useCallback } from "react";
 import Label from "./Label";
 import Items from "./Items";
 import axios from "@/pages/api/axios";
-import styles from "./BestProduct.module.css"
+import styles from "./BestProduct.module.css";
 
 interface Item {
-  createdAt?: string;
-  favoriteCount?: number;
-  ownerId?: number;
-  images?: string[];
-  tags?: string[];
+  createdAt: string;
+  favoriteCount: number;
+  ownerId: number;
+  images: string[];
+  tags: string[];
   price: number;
-  description?: string;
-  name?: string;
-  id?: number;
+  description: string;
+  name: string;
+  id: number;
 }
 
 interface SortedDataProps {
@@ -22,6 +22,9 @@ interface SortedDataProps {
 }
 
 const getPageSize = () => {
+  if (typeof window === "undefined") {
+    return 4;
+  }
   return window.innerWidth < 768 ? 1 : window.innerWidth < 1200 ? 2 : 4;
 };
 
@@ -61,7 +64,7 @@ function BestProduct() {
       <Label>베스트 상품</Label>
       <div className={styles.bestItems}>
         {itemList.map((item) => (
-          <Items item={item} key={item.id} />
+          <Items item={item} key={item.id} Best/>
         ))}
       </div>
     </div>

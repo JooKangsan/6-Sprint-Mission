@@ -1,14 +1,19 @@
-.Title {
-  color: #111827;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: normal;
+.Product {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.Product {
+.ProductTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.Items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
 }
 
 .ProductBar {
@@ -28,6 +33,7 @@
   flex: 1;
   align-items: center;
 }
+
 .searchImg {
   position: absolute;
 }
@@ -40,23 +46,6 @@
   border-radius: 12px;
   margin-left: -5px;
   padding-left: 30px;
-}
-
-.loginLink {
-  background-color: #3692ff;
-  color: #ffffff;
-  border: 0px;
-  border-radius: 8px;
-  width: 132px;
-  height: 42px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.Item {
-  display: grid;
-  grid-template-columns: repeat(5, 2fr);
-  gap: 24px;
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -72,4 +61,22 @@
     grid-template-columns: repeat(2, 2fr);
     gap: 24px;
   }
+}
+
+
+
+.addItemBtn {
+  background-color: #3692ff;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 8px;
+  width: 132px;
+  height: 42px;
+  font-weight: 600;
+}
+
+.Item {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  gap: 24px;
 }
