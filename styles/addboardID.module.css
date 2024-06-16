@@ -40,6 +40,17 @@
   border-radius: 0.8rem;
   border: 0;
   color: var(--white);
+  background-color: var(--blue-400);
+  margin-left: auto;
+}
+
+.disabledBtn {
+  width: 7.4rem;
+  height: 4.2rem;
+  padding: 1.2rem 2.3rem;
+  border-radius: 0.8rem;
+  border: 0;
+  color: var(--white);
   background-color: var(--gray-400);
   margin-left: auto;
 }

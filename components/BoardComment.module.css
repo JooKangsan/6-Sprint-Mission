@@ -20,6 +20,7 @@
   height: 2.4rem;
   background-color: var(--white);
   border: 0;
+  cursor: pointer;
 }
 
 .commentBottom {
