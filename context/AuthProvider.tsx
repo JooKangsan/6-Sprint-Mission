@@ -25,6 +25,7 @@ interface AuthContextType {
   user: User | null;
   isPending: boolean;
   login: (credentials: { email: string; password: string }) => Promise<void>;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -125,12 +126,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const logout = () => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      user: null,
+      isPending: false,
+    }));
+  };
+
   return (
     <AuthContext.Provider
       value={{
         user: values.user,
         isPending: values.isPending,
         login,
+        logout,
       }}
     >
       {children}

@@ -3,9 +3,24 @@ import Link from "next/link";
 import React from "react";
 import styles from "@/styles/Header.module.css";
 import { useAuth } from "@/context/AuthProvider";
+import { useRouter } from "next/router";
 
 function Header() {
-  const { user } = useAuth(true);
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const cookiesToDelete = ["accessToken", "refreshToken"]; // 예시로 사용, 실제 키를 입력하세요.
+
+    cookiesToDelete.forEach((cookie) => {
+      document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+    localStorage.removeItem("user");
+    logout();
+    router.push("/login");
+  };
 
   return (
     <div className={styles.Container}>
