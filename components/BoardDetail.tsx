@@ -21,7 +21,6 @@ interface PostsProps {
 }
 
 function BoardDetail({ article }: PostsProps) {
-  console.log(article);
   const { title, content, image, likeCount, createdAt } = article;
   const { nickname } = article.writer;
 

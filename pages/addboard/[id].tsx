@@ -18,9 +18,23 @@ interface Post {
   };
 }
 
+interface Writer {
+  image?: string;
+  nickname: string;
+  id: number;
+}
+
+interface Comment {
+  writer: Writer;
+  updatedAt: string;
+  createdAt: string;
+  content: string;
+  id: number;
+}
+
 interface PostsProps {
-  key: React.Key;
   article: Post;
+  comments: Comment[];
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -29,15 +43,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       notFound: true,
     };
   }
-
   const articleId = context.params["id"];
+
   let article;
+  let comments;
   try {
     const res = await axios.get(`/articles/${articleId}`);
+    const comment = await axios.get(`/articles/${articleId}/comments?limit=10`);
     article = res.data;
+    comments = comment.data.list;
     return {
       props: {
         article,
+        comments,
       },
     };
   } catch {
@@ -47,13 +65,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 }
 
-function postItems({ article }: PostsProps) {
+function PostItems({ article, comments }: PostsProps) {
+  console.log(comments);
   return (
     <div>
-      <BoardDetail article={article}/>
-      <BoardComment />
+      <BoardDetail article={article} />
+      {comments.map((comment) => (
+        <BoardComment comment={comment} key={comment.id} />
+      ))}
     </div>
   );
 }
 
-export default postItems;
+export default PostItems;

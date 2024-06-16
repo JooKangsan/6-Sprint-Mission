@@ -58,13 +58,13 @@ function BestProduct() {
       window.removeEventListener("resize", handleResize);
     };
   }, [pageSize, SortedData]);
-
+  console.log(itemList);
   return (
     <div className={styles.bestProduct}>
       <Label>베스트 상품</Label>
       <div className={styles.bestItems}>
         {itemList.map((item) => (
-          <Items item={item} key={item.id} Best/>
+          <Items item={item} key={item.id} Best />
         ))}
       </div>
     </div>

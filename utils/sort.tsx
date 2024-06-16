@@ -1,6 +1,6 @@
 export const SORT_ORDERS = {
   RECENT: "recent",
-  LIKES: "likes",
+  LIKES: "like",
   FAVORITE : "favorite"
 };
 
