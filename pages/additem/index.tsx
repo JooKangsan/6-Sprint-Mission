@@ -2,7 +2,8 @@ import React, { useState, ChangeEvent } from "react";
 import InputItem from "@/components/ItemsAddPage/InputItem";
 import FileInput from "@/components/ItemsAddPage/FileInput";
 import TagInput from "@/components/ItemsAddPage/TagInput";
-import styles from "@/components/ItemsAddPage/ItemsAddPage.module.css";
+import styles from "@/styles/ItemsAddPage.module.css";
+
 
 const ItemsAddPage = () => {
   const [name, setName] = useState<string>("");

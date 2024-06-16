@@ -5,7 +5,8 @@ import styles from "@/styles/Header.module.css";
 import { useAuth } from "@/context/AuthProvider";
 
 function Header() {
-  const { user} = useAuth(true);
+  const { user } = useAuth(true);
+
   return (
     <div className={styles.Container}>
       <div className={styles.InnerContainer}>
@@ -28,15 +29,20 @@ function Header() {
         </div>
       </div>
       {user ? (
-        <Link href="/mypage">
-          <Image
-            className={styles.user}
-            src="/Img/icons/user.svg"
-            width={40}
-            height={40}
-            alt="유저이미지"
-          />
-        </Link>
+        <div className={styles.isUser}>
+          <Link href="/mypage">
+            <Image
+              className={styles.user}
+              src="/Img/icons/user.svg"
+              width={40}
+              height={40}
+              alt="유저이미지"
+            />
+          </Link>
+          <button onClick={handleLogout} className={styles.logoutBtn}>
+            로그아웃
+          </button>
+        </div>
       ) : (
         <></>
       )}

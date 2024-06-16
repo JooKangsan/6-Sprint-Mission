@@ -54,3 +54,19 @@
   line-height: 2.1rem;
   color: #4b5563;
 }
+
+.isUser {
+  display: flex;
+}
+
+.logoutBtn {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 0.8rem;
+  border: 0;
+  background-color: var(--blue-400);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--white);
+  cursor: pointer;
+}
