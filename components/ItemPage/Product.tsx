@@ -108,7 +108,7 @@ function Product() {
           <button
             className={styles.addItemBtn}
             onClick={() => {
-              router.push("/additems");
+              router.push("/additem");
             }}
           >
             상품 등록하기
