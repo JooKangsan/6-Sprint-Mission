@@ -3,6 +3,7 @@ import axios from "../api/axios";
 import { GetServerSidePropsContext } from "next";
 import BoardComment from "@/components/BoardComment";
 import BoardDetail from "@/components/BoardDetail";
+import styles from "@/styles/addboardID.module.css";
 
 interface Post {
   id: number;
@@ -68,11 +69,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 function PostItems({ article, comments }: PostsProps) {
   console.log(comments);
   return (
-    <div>
+    <div className={styles.container}>
       <BoardDetail article={article} />
-      {comments.map((comment) => (
-        <BoardComment comment={comment} key={comment.id} />
-      ))}
+      <div className={styles.Comments}>
+        <div className={styles.addComment}>
+          <h2 className={styles.addCommentTitle}>댓글 달기</h2>
+          <textarea className={styles.CommentInput}placeholder="댓글을 입력해주세요"/>
+          <button className={styles.addCommentBtn}>등록</button>
+        </div>
+        {comments.map((comment) => (
+          <BoardComment comment={comment} key={comment.id} />
+        ))}
+      </div>
     </div>
   );
 }

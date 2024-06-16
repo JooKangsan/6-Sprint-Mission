@@ -1,0 +1,45 @@
+.container {
+  width: 120rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6.4rem;
+  margin: 0 auto;
+}
+
+.Comments {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.addComment {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.addCommentTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gary-900);
+}
+
+.CommentInput {
+  width: 100%;
+  height: 10.4rem;
+  border: 0;
+  border-radius: 1.2rem;
+  background-color: var(--gray-50);
+  padding: 1.6rem 2.4rem;
+}
+
+.addCommentBtn {
+  width: 7.4rem;
+  height: 4.2rem;
+  padding: 1.2rem 2.3rem;
+  border-radius: 0.8rem;
+  border: 0;
+  color: var(--white);
+  background-color: var(--gray-400);
+  margin-left: auto;
+}
