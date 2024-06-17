@@ -1,0 +1,36 @@
+POST https://learn.codeit.kr/api/link-service/users
+Content-Type: application/json
+
+{
+  "name": "주강산",
+  "email": "you04045@naver.com",
+  "password": "12341234"
+}
+
+###
+
+POST https://panda-market-api.vercel.app/auth/signUp
+Content-Type: application/json
+
+{
+  "email": "you04045@naver.com",
+  "nickname" : "다판다마카다미아",
+  "password": "0909wnskzz!",
+  "passwordConfirmation": "0909wnskzz!"
+}
+
+###
+
+POST  https://panda-market-api.vercel.app/auth/signIn
+Content-Type: application/json
+
+{
+  "email": "you04045@naver.com",
+  "password": "0909wnskzz!"
+}
+
+###
+POST https://panda-market-api.vercel.app/auth/refresh-token
+Cookie: access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQzLCJzY29wZSI6ImFjY2VzcyIsImlhdCI6MTcxODMwMzczOCwiZXhwIjoxNzE4MzA1NTM4LCJpc3MiOiJzcC1wYW5kYS1tYXJrZXQifQ.UHcvnNetxXqCkfnRzKHC3fepiugumr5P7i8T8Y_eo58
+Cookie: refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQzLCJzY29wZSI6InJlZnJlc2giLCJpYXQiOjE3MTgzMDM3MzgsImV4cCI6MTcxODkwODUzOCwiaXNzIjoic3AtcGFuZGEtbWFya2V0In0.CWwxATv5wYy21Bhmw3gTfGwGAL8uE0lLKuxT-oNQh4c
+

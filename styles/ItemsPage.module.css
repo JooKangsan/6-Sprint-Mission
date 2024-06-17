@@ -1,0 +1,7 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 120rem;
+  margin: 2.4rem auto 0;
+  gap: 40px;
+}

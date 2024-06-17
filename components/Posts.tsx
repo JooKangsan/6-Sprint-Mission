@@ -46,7 +46,7 @@ function Posts({ post }: PostsProps) {
           <div className={styles.InnerContainer}>
             <div className={styles.Group}>
               <Image
-                src="/Img/user.svg"
+                src="/Img/icons/user.svg"
                 width={24}
                 height={24}
                 alt="프로필 이미지"
@@ -58,7 +58,7 @@ function Posts({ post }: PostsProps) {
             </div>
             <div className={styles.HeartGroup}>
               <Image
-                src="/Img/heart.svg"
+                src="/Img/icons/heart.svg"
                 width={16}
                 height={16}
                 alt="heart"

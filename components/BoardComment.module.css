@@ -1,0 +1,50 @@
+.container {
+  width: 120rem;
+  margin: 0 auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.commentTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content {
+  font-size: 1.4rem;
+}
+
+.moreSeeBtn {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--white);
+  border: 0;
+  cursor: pointer;
+}
+
+.commentBottom {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nickname {
+  font-size: 1.2rem;
+}
+
+.QuestionTimstamp {
+  font-size: 1.2rem;
+  color: var(--gray-400);
+}
+
+.hr {
+  height: 1px;
+  width: 100%;
+  background-color: #e5e7eb;
+}

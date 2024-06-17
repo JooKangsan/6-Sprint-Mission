@@ -1,0 +1,19 @@
+.button_active {
+  height: 56px;
+  border: 0;
+  border-radius: 4rem;
+  background-color: var(--blue-400);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.button_disable {
+  height: 56px;
+  border: 0;
+  border-radius: 4rem;
+  background-color: var(--gray-400);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+}

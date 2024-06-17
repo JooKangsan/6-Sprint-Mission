@@ -18,7 +18,7 @@ function AddImage() {
     <div className={styles.Container}>
       <div className={styles.AddContainer}>
         <label className={styles.plusButton} htmlFor="image">
-          <Image src="/Img/Plus.svg" width={48} height={48} alt="plus 버튼" />
+          <Image src="/Img/icons/Plus.svg" width={48} height={48} alt="plus 버튼" />
           이미지 등록
         </label>
       </div>

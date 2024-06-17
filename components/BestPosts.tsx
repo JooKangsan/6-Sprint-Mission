@@ -28,7 +28,7 @@ function BestPosts({ post }: BestPostsProps) {
     <Link href={`/addboard/${post.id}`}>
       <div key={post.id} className={styles.BestContainer}>
         <div className={styles.InnerContainer}>
-          <Image src="/Img/badge.svg" width={102} height={30} alt="badge" />
+          <Image src="/Img/icons/badge.svg" width={102} height={30} alt="badge" />
           <div className={styles.Content}>
             <p className={styles.Text}>{post.title}</p>
             {post.image && (
@@ -44,7 +44,7 @@ function BestPosts({ post }: BestPostsProps) {
           <div className={styles.InfoContent}>
             <div className={styles.Info}>
               <p className={styles.nickname}>{post.writer.nickname}</p>
-              <Image src="/Img/heart.svg" width={16} height={16} alt="heart" />
+              <Image src="/Img/icons/heart.svg" width={16} height={16} alt="heart" />
               <p className={styles.likeCount}>{post.likeCount}</p>
             </div>
             <div>

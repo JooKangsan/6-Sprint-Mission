@@ -28,20 +28,19 @@ interface BestPostsProps {
 
 function Boards() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [BestPorduct, setBestPorduct] = useState<Post[]>([]);
   const [order, setOrder] = useState(SORT_ORDERS.RECENT);
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [visiblePostsCount, setVisiblePostsCount] = useState(3);
 
-  const sortedArticles = posts.sort((a, b) => b.likeCount - a.likeCount);
-  const topArticles = sortedArticles.slice(0, visiblePostsCount);
+  const topArticles = BestPorduct.slice(0, visiblePostsCount);
 
   async function getPosts() {
     try {
       const res = await axios.get(
-        `/articles/?page=${currentPage}&per_page=${perPage}`
+        `/articles/?page=${currentPage}&per_page=10&orderBy=${order}`
       );
       console.log("res", res);
       const nextPosts: Post[] = res.data.list;
@@ -51,9 +50,21 @@ function Boards() {
     }
   }
 
+  async function getBestPorductPosts() {
+    try {
+      const res = await axios.get(`/articles/?page=1&per_page=3&orderBy=like`);
+      console.log("res", res);
+      const Posts: Post[] = res.data.list;
+      setBestPorduct(Posts);
+    } catch (error) {
+      console.error("데이터를 불러오지 못했습니다.", error);
+    }
+  }
+
   useEffect(() => {
     getPosts();
-  }, [currentPage, perPage]);
+    getBestPorductPosts();
+  }, [currentPage, order]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -116,7 +127,7 @@ function Boards() {
       <div className={styles.postNav}>
         <div className={styles.search}>
           <Image
-            src="/Img/search.svg"
+            src="/Img/icons/search.svg"
             width={24}
             height={24}
             alt="search"
@@ -142,7 +153,7 @@ function Boards() {
             </div>
             <div>
               <Image
-                src="/Img/arrowDown.svg"
+                src="/Img/icons/arrowDown.svg"
                 width={24}
                 height={24}
                 alt="ArrowDown"
@@ -150,7 +161,7 @@ function Boards() {
             </div>
             <div>
               <Image
-                src="/Img/sort.svg"
+                src="/Img/icons/sort.svg"
                 width={24}
                 height={24}
                 alt="sort"
@@ -160,7 +171,7 @@ function Boards() {
           </div>
         </div>
       </div>
-      {isOpen ? (
+      {isOpen && (
         <div className={styles.OptionsContainer}>
           <div
             onClick={() => handleOrderChange(SORT_ORDERS.RECENT)}
@@ -175,8 +186,6 @@ function Boards() {
             좋아요순
           </div>
         </div>
-      ) : (
-        <></>
       )}
 
       {filteredPosts.map((post) => (
@@ -187,5 +196,3 @@ function Boards() {
 }
 
 export default Boards;
-
-
